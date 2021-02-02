@@ -24,7 +24,7 @@ function ContentLinksCardSection(props) {
           className="has-text-centered"
         />
         <CenteredColumns>
-          {props.items.records.map((item, index) => (
+          {props.items.map((item, index) => (
             <>
               {item.fields["Use Case"] &&
                 item.fields["Use Case"].includes(router.query.type) && (

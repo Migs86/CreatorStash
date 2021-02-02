@@ -55,7 +55,7 @@ function UseCases(props) {
               <article className="UseCases__use-case-item">
                 <h1 className="title is-4 is-spaced">{category.category}</h1>
                 <h2 className="subtitle is-6 has-text-link">
-                  {props.items.map((item, index) => (
+                  {props.items && props.items.length && props.items.map((item, index) => (
                     <>
                       {item.fields["Use Case"] &&
                         item.fields["Use Case"].includes(category.type) &&

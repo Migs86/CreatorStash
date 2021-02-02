@@ -1,9 +1,4 @@
 import React, {useState, useEffect} from "react";
-
-// Utilities
-import Airtable from 'airtable';
-
-//Components
 import HeroSection from "./../components/HeroSection";
 import Categories from "./../components/Categories";
 import UseCases from "./../components/UseCases";
@@ -17,11 +12,10 @@ function IndexPage(props) {
   const {
     records
   } = props;
-  console.log('index rec ', records);
-
   useEffect(() => {
-    console.log('effect index');
-  }, [])
+    console.log('index records ', records)
+  }, [records])
+
   
   return (
     <>
@@ -37,12 +31,7 @@ function IndexPage(props) {
         buttonText="Show Me Something Cool"
         buttonColor="primary"
         buttonInverted={false}
-        buttonPath={
-          "/link/" +
-          records[
-            Math.floor(Math.random() * Math.floor(records.length)) - 1
-          ].fields.Name
-        }
+        buttonPath={'/link'}
       />
       <Categories
         items={records}

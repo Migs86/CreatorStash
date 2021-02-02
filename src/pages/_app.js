@@ -26,51 +26,47 @@ function App(props) {
     
     const base = new Airtable({apiKey: process.env.REACT_APP_AIRTABLE_API_KEY}).base(process.env.REACT_APP_AIRTABLE_BASE_KEY);
     const [state, setState] = useState({
-      records: {},
+      records: [],
       tutorials: {}
     })
-    
-    // useEffect(() => {  
-    //   console.log('useEffect');
-    //   base('Overview').select({view: 'Grid view'})
-    //     .eachPage(
-    //       (records, fetchNextPage) => {
-    //         this.setState({
-    //           records: records
-    //         });
-    //         console.log(records);
-    //         fetchNextPage();
-    //       }
-    //     );
-      
-    // }, [])  
 
-    base('Overview').select({
-        // Selecting the first 3 records in Grid view:
-
-        maxRecords: 500,
-        view: "Grid view"
-      }).eachPage(function page(records, fetchNextPage) {
-          // This function (`page`) will get called for each page of records.
-
-          console.log('recordsss: ', records);
+    try {
+      base('Overview').select({
+        view: 'Grid view'
+      }).firstPage(function(err, records) {
+          if (err) { console.error(err); return; }
+          records.forEach(function(record) {
+              console.log('Retrieved', record.get('Name'));
+          });
           this.setState({
             records: records
           });
-          // To fetch the next page of records, call `fetchNextPage`.
-          // If there are more records, `page` will get called again.
-          // If there are no more records, `done` will get called.
-          fetchNextPage();
-
-      }, function done(err) {
-          if (err) { console.error(err); return; }
       });
+      // base('Overview').select({      
+      //   maxRecords: 100,
+      //   view: "Grid view"
+      // }).firstPage(function page(records, fetchNextPage) {
+      //     // This function (`page`) will get called for each page of records.
+      //     records.forEach(function(record) {
+      //       console.log('Retrieved', record.get('Name'));
+      //     });
+          
+      //     console.log('recordsss: ', records);
+      //     this.setState({
+      //       records: records
+      //     });
+      //     // To fetch the next page of records, call `fetchNextPage`.
+      //     // If there are more records, `page` will get called again.
+      //     // If there are no more records, `done` will get called.
+      //     // fetchNextPage();
+
+      // }, function done(err) {
+      //     if (err) { console.error(err); return; }
+      // });
+    } catch (e) {
+      console.log(e);
+    }
     
-    useEffect(() => {  
-      console.log('useEffect');
-      
-      
-    }, [])  
 
   return (
     <AuthProvider>
@@ -97,11 +93,11 @@ function App(props) {
 
             <Route exact path="/faves" component={FavesPage} />
 
-            <Route exact path="/usecase/:type" component={UsecasePage} resources={state.resources} />
+            <Route exact path="/usecase/:type" component={UsecasePage} records={state.records} />
 
-            <Route exact path="/link/:name" component={LinkPage} resources={state.resources} />
+            <Route exact path="/link/:name" component={LinkPage} records={state.records} />
 
-            <Route exact path="/category/:category" component={CategoryPage} resources={state.resources} />
+            <Route exact path="/category/:category" component={CategoryPage} records={state.records} />
 
             <Route
               exact

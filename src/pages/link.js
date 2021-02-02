@@ -1795,7 +1795,7 @@ function LinkPage(props) {
     offset: "itrD5qXo0mVbt2ByO/recQhIFIaPkruvLUk",
   };
 
-  const link = items.records.find(
+  const link = items.find(
     (resource) => resource.fields.Name === router.query.name
   );
 

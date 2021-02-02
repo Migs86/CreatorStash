@@ -6,7 +6,9 @@ import { Link } from "./../util/router.js";
 import "./Categories.scss";
 
 function Categories(props) {
-  const { items: items } = props;
+  const { items } = props;
+
+  console.log('Categories items => ', items)
   const categories = [
     {
       category: "Iconography",
@@ -62,7 +64,7 @@ function Categories(props) {
 
   return (
     <Section
-      items={props.items}
+      items={items}
       color={props.color}
       size={props.size}
       backgroundImage={props.backgroundImage}
@@ -76,13 +78,13 @@ function Categories(props) {
           spaced={true}
           className="has-text-centered"
         />
-        <CenteredColumns items={props.items}>
+        <CenteredColumns items={items}>
           {categories.map((category, index) => (
             <div className="column is-half" key={index}>
               <article className="Categories__faq-item">
                 <h1 className="title is-4 is-spaced">{category.category}</h1>
 
-                {props.items.map((item, index) => (
+                { items && items.length && items.map((item, index) => (
                   <>
                     {item.fields.Category.includes(category.type) &&
                       item.fields["Top Pick"] === true && (

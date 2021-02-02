@@ -22,7 +22,7 @@ function ContentCardsSection(props) {
           className="has-text-centered"
         />
         <CenteredColumns>
-          {props.items.map((item, index) => (
+          {props.items && props.items.length && props.items.map((item, index) => (
             <>
               {item.fields["Top Pick"] === true && (
                 <div

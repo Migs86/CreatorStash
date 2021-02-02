@@ -24,7 +24,7 @@ function CategoryContentCardsSection(props) {
           className="has-text-centered"
         />
         <CenteredColumns>
-          {props.items.records.map((item, index) => (
+          {props.items && props.items.map((item, index) => (
             <>
               {item.fields.Category.includes(router.query.category) && (
                 <div
