@@ -1,5 +1,20 @@
 @charset "utf-8";
-
+@font-face {
+  font-family: 'Stolzl-Bold';
+  src: url('../assets/fonts/Stolzl-Bold.eot'); /* IE9 Compat Modes */
+  src: url('../assets/fonts/Stolzl-Bold.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('../assets/fonts/Stolzl-Bold.woff2') format('woff2'), /* Super Modern Browsers */
+       url('../assets/fonts/Stolzl-Bold.woff') format('woff'), /* Pretty Modern Browsers */
+       url('../assets/fonts/Stolzl-Bold.ttf')  format('truetype'), /* Safari, Android, iOS */
+}
+@font-face {
+  font-family: 'Stolzl-Book';
+  src: url('../assets/fonts/Stolzl-Book.eot'); /* IE9 Compat Modes */
+  src: url('../assets/fonts/Stolzl-Book.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+       url('../assets/fonts/Stolzl-Book.woff2') format('woff2'), /* Super Modern Browsers */
+       url('../assets/fonts/Stolzl-Book.woff') format('woff'), /* Pretty Modern Browsers */
+       url('../assets/fonts/Stolzl-Book.ttf')  format('truetype'), /* Safari, Android, iOS */
+}
 // COLORS
 $primary: #00d1b2;
 $info: #209CEE;
@@ -12,10 +27,12 @@ $dark: #363636;
 // TEXT
 $text: #4A4A4A;
 $link: #3273DC;
-$body-family: BlinkMacSystemFont, -apple-system, "Segoe UI", "Roboto", "Oxygen",
+$body-family: "Stolzl-Book", BlinkMacSystemFont, -apple-system, "Segoe UI", "Roboto", "Oxygen",
   "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
   "Helvetica", "Arial", sans-serif;
-$title-family: false;
+$title-family: "Stolzl-Bold", BlinkMacSystemFont, -apple-system, "Segoe UI", "Roboto", "Oxygen",
+"Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+"Helvetica", "Arial", sans-serif;
 $button-family: false;
 
 // BREAKPOINTS

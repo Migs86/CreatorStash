@@ -41,7 +41,7 @@ function IndexPage(props) {
         title="Everything you need to succeed as a creator"
         subtitle="A massive compilation of resources to give fuel to your journey as a creator or entrepreneur."
         image="https://dl.airtable.com/.attachments/ca643f9a5257c1fd19297bf55123bde8/d9aabd5d/undraw_video_influencer_9oyy.svg"
-        buttonText="Show Me Something Cool"
+        buttonText="Roll the dice"
         buttonColor="primary"
         buttonInverted={false}
         buttonPath={'/link'}
