@@ -18,24 +18,59 @@ import Footer from "./../components/Footer";
 import "./../util/analytics.js";
 import { AuthProvider } from "./../util/auth.js";
 
+import Airtable from 'airtable';
+
+
+
 function App(props) {
+    
+    const base = new Airtable({apiKey: process.env.REACT_APP_AIRTABLE_API_KEY}).base(process.env.REACT_APP_AIRTABLE_BASE_KEY);
     const [state, setState] = useState({
-      resources: {},
+      records: {},
       tutorials: {}
     })
+    
+    // useEffect(() => {  
+    //   console.log('useEffect');
+    //   base('Overview').select({view: 'Grid view'})
+    //     .eachPage(
+    //       (records, fetchNextPage) => {
+    //         this.setState({
+    //           records: records
+    //         });
+    //         console.log(records);
+    //         fetchNextPage();
+    //       }
+    //     );
+      
+    // }, [])  
 
-    useEffect(() => {
-      fetch('https://api.airtable.com/v0/' + process.env.AIRTABLE_BASE_KEY + '/' + 'Overview' + '?api_key=' + process.env.AIRTABLE_API_KEY)
-        .then(res => res.json())
-        .then(res => {
-          console.log('FETCH RECORDS' + res.records)
-          this.setState({ resources: res })
-        })
-        .catch(error => console.log(error))
-      return () => {
-        
-      }
-    }, [])
+    base('Overview').select({
+        // Selecting the first 3 records in Grid view:
+
+        maxRecords: 500,
+        view: "Grid view"
+      }).eachPage(function page(records, fetchNextPage) {
+          // This function (`page`) will get called for each page of records.
+
+          console.log('recordsss: ', records);
+          this.setState({
+            records: records
+          });
+          // To fetch the next page of records, call `fetchNextPage`.
+          // If there are more records, `page` will get called again.
+          // If there are no more records, `done` will get called.
+          fetchNextPage();
+
+      }, function done(err) {
+          if (err) { console.error(err); return; }
+      });
+    
+    useEffect(() => {  
+      console.log('useEffect');
+      
+      
+    }, [])  
 
   return (
     <AuthProvider>
@@ -48,7 +83,7 @@ function App(props) {
           />
 
           <Switch>
-            <Route exact path="/" component={IndexPage} resources={state.resources}/>
+            <Route exact path="/" component={IndexPage} records={state.records} />
 
             <Route exact path="/about" component={AboutPage} />
 

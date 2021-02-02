@@ -1,4 +1,9 @@
-import React from "react";
+import React, {useState, useEffect} from "react";
+
+// Utilities
+import Airtable from 'airtable';
+
+//Components
 import HeroSection from "./../components/HeroSection";
 import Categories from "./../components/Categories";
 import UseCases from "./../components/UseCases";
@@ -6,15 +11,22 @@ import NewsletterSection from "./../components/NewsletterSection";
 import ContentCardsSection from "./../components/ContentCardsSection";
 import UsersSection from "./../components/UsersSection";
 
+
+
 function IndexPage(props) {
   const {
-    resources
+    records
   } = props;
+  console.log('index rec ', records);
 
+  useEffect(() => {
+    console.log('effect index');
+  }, [])
+  
   return (
     <>
       <HeroSection
-        items={resources}
+        items={records}
         color="white"
         size="medium"
         backgroundImage=""
@@ -27,13 +39,13 @@ function IndexPage(props) {
         buttonInverted={false}
         buttonPath={
           "/link/" +
-          resources.records[
-            Math.floor(Math.random() * Math.floor(resources.records.length)) - 1
+          records[
+            Math.floor(Math.random() * Math.floor(records.length)) - 1
           ].fields.Name
         }
       />
       <Categories
-        items={resources.records}
+        items={records}
         color="white"
         size="medium"
         backgroundImage=""
@@ -42,7 +54,7 @@ function IndexPage(props) {
         subtitle="Find some cool resources for your next project."
       />
       <UseCases
-        items={resources.records}
+        items={records}
         color="white"
         size="medium"
         backgroundImage=""
@@ -64,7 +76,7 @@ function IndexPage(props) {
         subscribedMessage="You are now subscribed!"
       />
       <ContentCardsSection
-        items={resources.records}
+        items={records}
         color="white"
         size="medium"
         backgroundImage=""
