@@ -1,6 +1,6 @@
 import React from "react";
 import Section from "./Section";
-import SectionHeader3 from "./SectionHeader3";
+import SectionHeader from "./SectionHeader";
 import CenteredColumns from "./CenteredColumns";
 import { Link } from "./../util/router.js";
 import Avatar from "./Avatar";
@@ -54,7 +54,7 @@ function UsersSection(props) {
       backgroundImageOpacity={props.backgroundImageOpacity}
     >
       <div className="container">
-        <SectionHeader3
+        <SectionHeader
           title={props.title}
           subtitle={props.subtitle}
           size={3}

@@ -14,7 +14,7 @@ function AuthPage(props) {
       buttonColor="primary"
       buttonInverted={false}
       type={router.query.type}
-      providers={["google", "facebook", "twitter"]}
+      providers={["google", "facebook"]}
       afterAuthPath={router.query.next || "/dashboard"}
     />
   );

@@ -27,7 +27,7 @@ function LinkMainSection(props) {
           className="has-text-centered"
         />
         <ScreenshotSection link={props.link}>
-          {link.fields.screenshots.map((item, index) => (
+          {link && link.fields.screenshots && link.fields.screenshots.map((item, index) => (
             <div
               className="column is-half-tablet is-one-third-desktop"
               key={index}

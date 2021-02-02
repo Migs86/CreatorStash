@@ -19,17 +19,17 @@ function Footer(props) {
         <div className="links right">
           <Link to="/about">About</Link>
 
-          <Link to="/contact">Contact</Link>
-          <a
+          {/* <Link to="/contact">Contact</Link> */}
+          {/* <a
             target="_blank"
             href="https://medium.com"
             rel="noopener noreferrer"
           >
             Blog
-          </a>
+          </a> */}
         </div>
         <div className="social right">
-          <a
+          {/* <a
             href="https://twitter.com/divjoy"
             target="_blank"
             rel="noopener noreferrer"
@@ -37,7 +37,7 @@ function Footer(props) {
             <span className="icon">
               <i className="fab fa-twitter" />
             </span>
-          </a>
+          </a> */}
           <a
             href="https://facebook.com/miguelefernando"
             target="_blank"

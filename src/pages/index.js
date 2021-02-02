@@ -1,26 +1,39 @@
-import React, {useState, useEffect} from "react";
+import React, {useState, useEffect, useContext } from "react";
 import HeroSection from "./../components/HeroSection";
 import Categories from "./../components/Categories";
 import UseCases from "./../components/UseCases";
 import NewsletterSection from "./../components/NewsletterSection";
 import ContentCardsSection from "./../components/ContentCardsSection";
 import UsersSection from "./../components/UsersSection";
-
+import AirtableBase from '../util/airtable';
 
 
 function IndexPage(props) {
-  const {
-    records
-  } = props;
-  useEffect(() => {
-    console.log('index records ', records)
-  }, [records])
+  const [state, setState] = useState({
+    records: []
+  });
+  
+  // TBD Abstract out Airtbale functions
+  var recordsProcessed = [];
+  AirtableBase('Overview').select({
+    maxRecords: 200,
+    view: "Grid view"
+  }).eachPage(function page(records, fetchNextPage) {
+      recordsProcessed = recordsProcessed.concat(records);
+      fetchNextPage();
 
+  }, function done(err) {
+    setState({
+      records: recordsProcessed,
+      fetched: true
+    })
+      if (err) { console.error(err); return; }
+  });
   
   return (
     <>
       <HeroSection
-        items={records}
+        items={state.records}
         color="white"
         size="medium"
         backgroundImage=""
@@ -33,24 +46,6 @@ function IndexPage(props) {
         buttonInverted={false}
         buttonPath={'/link'}
       />
-      <Categories
-        items={records}
-        color="white"
-        size="medium"
-        backgroundImage=""
-        backgroundImageOpacity={1}
-        title="Categories"
-        subtitle="Find some cool resources for your next project."
-      />
-      <UseCases
-        items={records}
-        color="white"
-        size="medium"
-        backgroundImage=""
-        backgroundImageOpacity={1}
-        title="Use Cases"
-        subtitle="Find help for a specific problem."
-      />
       <NewsletterSection
         color="white"
         size="medium"
@@ -59,13 +54,31 @@ function IndexPage(props) {
         title="Stay in the know"
         subtitle="Receive our latest articles and feature updates"
         buttonText="Subscribe"
-        buttonColor="primary"
+        buttonColor="warning"
         buttonInverted={false}
         inputPlaceholder="Enter your email"
         subscribedMessage="You are now subscribed!"
       />
+      <Categories
+        items={state.records}
+        color="white"
+        size="medium"
+        backgroundImage=""
+        backgroundImageOpacity={1}
+        title="Categories"
+        subtitle="Find some cool resources for your next project."
+      />
+      <UseCases
+        items={state.records}
+        color="white"
+        size="medium"
+        backgroundImage=""
+        backgroundImageOpacity={1}
+        title="Use Cases"
+        subtitle="Find help for a specific problem."
+      />
       <ContentCardsSection
-        items={records}
+        items={state.records}
         color="white"
         size="medium"
         backgroundImage=""
