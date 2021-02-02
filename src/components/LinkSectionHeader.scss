@@ -1,0 +1,21 @@
+.LinkSectionHeader {
+  &__header {
+    // Add bottom margin if element below
+    &:not(:last-child) {
+      margin-bottom: 3rem;
+    }
+  }
+
+  &__subtitle {
+    // Subtitle text generally isn't very long
+    // so usually looks better to limit width.
+    max-width: 700px;
+    // So we can have max-width but still
+    // have alignment controlled by text-align.
+    display: inline-block;
+  }
+
+  &__container {
+    margin-top: -50px;
+  }
+}
