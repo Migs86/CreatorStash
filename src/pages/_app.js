@@ -19,17 +19,17 @@ import "./../util/analytics.js";
 import { AuthProvider } from "./../util/auth.js";
 
 function App(props) {
-    const {state, setState} = useState({
-      resources: [],
-      tutorials: []
+    const [state, setState] = useState({
+      resources: {},
+      tutorials: {}
     })
 
     useEffect(() => {
       fetch('https://api.airtable.com/v0/' + process.env.AIRTABLE_BASE_KEY + '/' + 'Overview' + '?api_key=' + process.env.AIRTABLE_API_KEY)
         .then(res => res.json())
         .then(res => {
-          console.log(res.records)
-          this.setState({ resources: res.records })
+          console.log('FETCH RECORDS' + res.records)
+          this.setState({ resources: res })
         })
         .catch(error => console.log(error))
       return () => {
@@ -48,7 +48,7 @@ function App(props) {
           />
 
           <Switch>
-            <Route exact path="/" component={IndexPage} />
+            <Route exact path="/" component={IndexPage} resources={state.resources}/>
 
             <Route exact path="/about" component={AboutPage} />
 
@@ -62,11 +62,11 @@ function App(props) {
 
             <Route exact path="/faves" component={FavesPage} />
 
-            <Route exact path="/usecase/:type" component={UsecasePage} />
+            <Route exact path="/usecase/:type" component={UsecasePage} resources={state.resources} />
 
-            <Route exact path="/link/:name" component={LinkPage} />
+            <Route exact path="/link/:name" component={LinkPage} resources={state.resources} />
 
-            <Route exact path="/category/:category" component={CategoryPage} />
+            <Route exact path="/category/:category" component={CategoryPage} resources={state.resources} />
 
             <Route
               exact
