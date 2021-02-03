@@ -88,7 +88,7 @@ function Categories(props) {
 
                 { items && items.length ? items.map((item, index) => (
                   <>
-                    {item.fields.Category.includes(category.type) &&
+                    {item.fields.Category && item.fields.Category.includes(category.type) &&
                       item.fields["Top Pick"] === true && (
                         <ul>
                           <li className="has-text-link">

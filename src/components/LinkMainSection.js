@@ -21,7 +21,7 @@ function LinkMainSection(props) {
           link={props.link}
           title={props.title}
           subtitle={props.subtitle}
-          ratings={[1, 2, 3, 4, 5]}
+          ratings={[1, 2, 3, 4, 5, 6, 7, 8, 9,10]}
           size={3}
           spaced={true}
           className="has-text-centered"

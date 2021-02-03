@@ -28,9 +28,7 @@ function LinkPage(props) {
       if (err) { console.error(err); return; }
   });
   
-  const link = state.resource.find(
-    (resource) => resource.fields.Name === router.query.name
-  );
+  const link = state.resource.find(resource => resource.fields.Name === router.query.name);
   
   if (link) {
     return (

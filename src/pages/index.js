@@ -43,8 +43,8 @@ function IndexPage(props) {
         image="https://dl.airtable.com/.attachments/ca643f9a5257c1fd19297bf55123bde8/d9aabd5d/undraw_video_influencer_9oyy.svg"
         buttonText="Roll the dice"
         buttonColor="primary"
-        buttonInverted={false}
-        buttonPath={'/link'}
+        buttonInverted={false} 
+        buttonPath={ state.records.length ? '/link/' + state.records[Math.floor(Math.random() * Math.floor(state.records.length)) - 1].fields.Name : '/'}
       />
       <NewsletterSection
         color="white"
