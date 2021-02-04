@@ -11,8 +11,7 @@ function LinkPageSection(props) {
     backgroundImageRepeat,
     className,
     children,
-    link,
-    items,
+   
     // Passed to section element
     ...otherProps
   } = props;

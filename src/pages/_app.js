@@ -18,8 +18,6 @@ import Footer from "./../components/Footer";
 import "./../util/analytics.js";
 import { AuthProvider } from "./../util/auth.js";
 
-import Airtable from 'airtable';
-
 
 
 function App(props) {
@@ -27,7 +25,7 @@ function App(props) {
   return (
     <AuthProvider>
         <Router>
-          {/* <AppContext.Provider records={state.records} > */}
+          
             <Navbar
               color="white"
               spaced={true}
@@ -72,7 +70,7 @@ function App(props) {
               copyright="© 2021"
               logo=""
             />
-          {/* </AppContext.Provider> */}
+          
         </Router>
     </AuthProvider>
   );

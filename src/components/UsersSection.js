@@ -11,8 +11,8 @@ function UsersSection(props) {
     {
       headerImage: "https://source.unsplash.com/pe_R74hldW4/1080x360",
       avatarImage: "https://uploads.divjoy.com/pravatar-150x-68.jpeg",
-      name: "John Smith",
-      username: "johnsmith",
+      name: "Jason Leighton",
+      username: "jleighton",
     },
     {
       headerImage: "https://source.unsplash.com/uwPBAlQyIag/1080x360",
@@ -69,7 +69,7 @@ function UsersSection(props) {
             >
               <Link
                 className="UsersSection__card card is-flex"
-                to={`/user/${item.username}`}
+                to={`/`} //{`/user/${item.username}`}
               >
                 <div className="card-image">
                   <figure className="UsersSection__image image is-3by1">

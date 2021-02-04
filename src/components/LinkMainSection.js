@@ -1,33 +1,37 @@
-import React from "react";
+import React, {useEffect} from "react";
 import LinkPageSection from "./LinkPageSection";
 import LinkSectionHeader from "./LinkSectionHeader";
-import ScreenshotSection from "./ScreenshotSection";
 import DescriptionSection from "./DescriptionSection";
 import "./LinkMainSection.scss";
 
-function LinkMainSection(props) {
-  const { link: link } = props;
+function LinkMainSection({ link, color, size, backgroundImage, backgroundImageOpacity, title, subtitle}) {
+  console.log('LinkMainSection ', link)
+  useEffect(() => {
+    console.log('LinkMainSection effect', link)
+  }, [link]);
+
   return (
     <LinkPageSection
-      link={props.link}
-      items={props.items}
-      color={props.color}
-      size={props.size}
-      backgroundImage={props.backgroundImage}
-      backgroundImageOpacity={props.backgroundImageOpacity}
+      link={link}
+      color={color}
+      size={size}
+      backgroundImage={backgroundImage}
+      backgroundImageOpacity={backgroundImageOpacity}
     >
       <div className="LinkMainSection__container container">
         <LinkSectionHeader
-          link={props.link}
-          title={props.title}
-          subtitle={props.subtitle}
-          ratings={[1, 2, 3, 4, 5, 6, 7, 8, 9,10]}
+          link={link}
+          title={title}
+          subtitle={subtitle}
+          ratings={[1, 2, 3, 4, 5, 6, 7, 8, 9, 10]}
           size={3}
           spaced={true}
           className="has-text-centered"
         />
-        <ScreenshotSection link={props.link}>
-          {link && link.fields.screenshots && link.fields.screenshots.map((item, index) => (
+        
+
+        <div className="columns is-centered is-variable is-4 is-multiline">
+          {link[0].fields && link[0].fields.screenshots && link[0].fields.screenshots.map((item, index) => (
             <div
               className="column is-half-tablet is-one-third-desktop"
               key={index}
@@ -35,13 +39,13 @@ function LinkMainSection(props) {
               <div className="card">
                 <div className="card-image">
                   <figure className="image">
-                    <img src={item.url} alt={item.filename} />
+                    <img src={item.thumbnails.large.url} alt={item.filename} />
                   </figure>
                 </div>
               </div>
             </div>
           ))}
-        </ScreenshotSection>
+        </div>
         <DescriptionSection link={link} />
       </div>
     </LinkPageSection>

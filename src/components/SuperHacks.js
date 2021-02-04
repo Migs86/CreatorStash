@@ -5,12 +5,12 @@ import CenteredColumns from "./CenteredColumns";
 import { Link } from "./../util/router.js";
 import "./UseCases.scss";
 
-function UseCases(props) {
+function SuperHacks(props) {
   const {
     items
   } = props;
 
-  const categories = [
+  const hackegories = [
     {
       category: "I need inspiration",
       type: "Inspiration",
@@ -50,12 +50,12 @@ function UseCases(props) {
           className="has-text-centered"
         />
         <CenteredColumns>
-          {categories.map((category, index) => (
+          {hackegories.map((category, index) => (
             <div className="column is-half" key={index}>
               <article className="UseCases__use-case-item">
                 <h1 className="title is-4 is-spaced">{category.category}</h1>
 
-                { items && items.length ? items.map((item, index) => (
+                {/* { items && items.length ? items.map((item, index) => (
                   <>
                     {item.fields["Use Case"] && item.fields["Use Case"].includes(category.type) &&
                       item.fields["Top Pick"] === true && (
@@ -66,7 +66,7 @@ function UseCases(props) {
                             </Link>
                             {item.fields["Category"] &&
                               item.fields["Category"].length > 0 && item.fields["Category"].map((usecase, index) => {
-                                return <span className="Categories__tag tag is-light is-info" key={index}>
+                                return <span className="Categories__tag tag is-light is-info">
                                         {item.fields["Category"][index]}
                                       </span>
                               })}
@@ -75,7 +75,7 @@ function UseCases(props) {
                         </ul>
                       )}
                   </>
-                )): ''}
+                )): ''} */}
 
                 <h2 className="Categories__subtitle subtitle is-6 has-text-link">
                   <Link to={"/category/" + category.type}>
@@ -91,4 +91,4 @@ function UseCases(props) {
   );
 }
 
-export default UseCases;
+export default SuperHacks;

@@ -1,10 +1,14 @@
-import React from "react";
+import React, {useEffect} from "react";
 import Section from "./Section";
 import SectionHeader from "./SectionHeader";
 import { Link } from "./../util/router.js";
 import "./HeroSection.scss";
 
 function HeroSection(props) {
+
+  useEffect(() => {
+    console.log('reload hero')
+  }, [props.resources])
   return (
     <Section
       color={props.color}

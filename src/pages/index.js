@@ -2,38 +2,32 @@ import React, {useState, useEffect, useContext } from "react";
 import HeroSection from "./../components/HeroSection";
 import Categories from "./../components/Categories";
 import UseCases from "./../components/UseCases";
+import SuperHacks from "./../components/SuperHacks";
 import NewsletterSection from "./../components/NewsletterSection";
 import ContentCardsSection from "./../components/ContentCardsSection";
 import UsersSection from "./../components/UsersSection";
-import AirtableBase from '../util/airtable';
-
+import getRecords from '../util/airtable';
 
 function IndexPage(props) {
-  const [state, setState] = useState({
-    records: []
-  });
-  
-  // TBD Abstract out Airtbale functions
-  var recordsProcessed = [];
-  AirtableBase('Overview').select({
-    maxRecords: 200,
-    view: "Grid view"
-  }).eachPage(function page(records, fetchNextPage) {
-      recordsProcessed = recordsProcessed.concat(records);
-      fetchNextPage();
+  const [resources, setResources] = useState([]);
 
-  }, function done(err) {
-    setState({
-      records: recordsProcessed,
-      fetched: true
-    })
-      if (err) { console.error(err); return; }
-  });
+  useEffect(() => {
+      // filterByFormula: 'OR(Find("Subscription", {Cost}),Find("One-Time Fee", {Cost}))', 
+      // filterByFormula: '{Rating}>3',
+    const filter = {
+      maxRecords: 300,
+      view: "Grid view"
+    };
+    getRecords('Overview', filter, setResources);
+
+  }, []);
+
+  
   
   return (
     <>
       <HeroSection
-        items={state.records}
+        items={resources}
         color="white"
         size="medium"
         backgroundImage=""
@@ -44,23 +38,32 @@ function IndexPage(props) {
         buttonText="Roll the dice"
         buttonColor="primary"
         buttonInverted={false} 
-        buttonPath={ state.records.length ? '/link/' + state.records[Math.floor(Math.random() * Math.floor(state.records.length)) - 1].fields.Name : '/'}
+        buttonPath={resources.length ? '/link/' + resources[Math.floor(Math.random() * Math.floor(resources.length)) - 1].fields.Name : '/'}
       />
       <NewsletterSection
         color="white"
         size="medium"
         backgroundImage=""
         backgroundImageOpacity={1}
-        title="Stay in the know"
-        subtitle="Receive our latest articles and feature updates"
+        title="Cool stuff right in your box"
+        subtitle="We'll send you the coolest content and tools from around the web to your inbox.  That first line didn't sound right."
         buttonText="Subscribe"
         buttonColor="warning"
         buttonInverted={false}
         inputPlaceholder="Enter your email"
         subscribedMessage="You are now subscribed!"
       />
+      <ContentCardsSection
+        items={resources}
+        color="white"
+        size="medium"
+        backgroundImage=""
+        backgroundImageOpacity={1}
+        title="Featured Picks"
+        subtitle=""
+      />
       <Categories
-        items={state.records}
+        items={resources}
         color="white"
         size="medium"
         backgroundImage=""
@@ -69,7 +72,7 @@ function IndexPage(props) {
         subtitle="Find some cool resources for your next project."
       />
       <UseCases
-        items={state.records}
+        items={resources}
         color="white"
         size="medium"
         backgroundImage=""
@@ -77,15 +80,16 @@ function IndexPage(props) {
         title="Use Cases"
         subtitle="Find help for a specific problem."
       />
-      <ContentCardsSection
-        items={state.records}
+      <SuperHacks
+        items={resources}
         color="white"
         size="medium"
         backgroundImage=""
         backgroundImageOpacity={1}
-        title="All Top Picks"
-        subtitle=""
+        title="Learn new superhacks"
+        subtitle="'cause its 2021 and regular hacks don't cut it anymore."
       />
+      
       <UsersSection
         color="white"
         size="medium"
@@ -99,8 +103,8 @@ function IndexPage(props) {
         size="medium"
         backgroundImage=""
         backgroundImageOpacity={1}
-        title="Stay in the know"
-        subtitle="Receive our latest articles and feature updates"
+        title="Cool stuff right in your inbox"
+        subtitle="We'll send you the coolest content and tools from around the web to your inbox. See, we even learn from out mistakes."
         buttonText="Subscribe"
         buttonColor="primary"
         buttonInverted={false}

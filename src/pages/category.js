@@ -1,36 +1,30 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import CategoryContentCardsSection from "./../components/CategoryContentCardsSection";
 import { useRouter } from "./../util/router.js";
-import AirtableBase from '../util/airtable';
+import getRecords from './../util/airtable';
+// import AirtableBase from '../util/airtable';
 
 function CategoryPage(props) {
+ 
+ 
+  const [resources, setResources] = useState([]);
 
-  const [state, setState] = useState({
-    records: []
-  });
-  
-  // TBD Abstract out Airtbale functions
-  var recordsProcessed = [];
-  AirtableBase('Overview').select({
-    maxRecords: 500,
-    view: "Grid view"
-  }).eachPage(function page(records, fetchNextPage) {
-      recordsProcessed = recordsProcessed.concat(records);
-      fetchNextPage();
-  
-  }, function done(err) {
-    setState({
-      records: recordsProcessed
-    })
-    if (err) { console.error(err); return; }
-  });
+  useEffect(() => {
+    const filter = {
+      filterByFormula: `(Find("${router.query.category}", {Category}))`,
+      maxRecords: 100,
+      view: "Grid view"
+    };
+    getRecords('Overview', filter, setResources);
+    
+  }, []);
+  console.log('Category resources ==> ', resources)
 
-  
   const router = useRouter();
 
   return (
     <CategoryContentCardsSection
-      items={state.records}
+      items={resources}
       color="white"
       size="medium"
       backgroundImage=""

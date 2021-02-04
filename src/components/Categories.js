@@ -7,11 +7,12 @@ import { Link } from "./../util/router.js";
 
 import "./Categories.scss";
 
-function Categories(props) {
-  
-  const {
-    items
-  } = props;
+function Categories({items, color, size, backgroundImage, backgroundImageOpacity, title, subtitle }) {
+
+ 
+
+
+  console.log("my data =====>",  items)
 
   const categories = [
     {
@@ -19,28 +20,12 @@ function Categories(props) {
       type: "Icons",  
     },
     {
-      category: "Colors",
+      category: "Color Schemes",
       type: "Color",  
     },
     {
       category: "Illustration",
       type: "Illustration",
-    },
-    {
-      category: "UI / UX Design",
-      type: "Design",
-    },
-    {
-      category: "Stock Photos",
-      type: "Stock Photos",
-    },
-    {
-      category: "Prototyping",
-      type: "Prototyping",
-    },
-    {
-      category: "Mockups",
-      type: "Mockups",
     },
     {
       category: "Video Editing",
@@ -59,23 +44,48 @@ function Categories(props) {
       type: "Landingpage",
     },
     {
-      category: "Webpage Builder",
-      type: "Landingpage",
+      category: "Monetize My Content",
+      type: "Monetize",
     },
+    {
+      category: "Newsletter",
+      type: "Newsletter",
+    },
+    {
+      category: "Blog",
+      type: "Blog",
+    },
+    {
+      category: "UI / UX Design",
+      type: "Design Tools",
+    },
+    {
+      category: "Stock Photos/Videos",
+      type: "Stock Photos",
+    },
+    {
+      category: "Prototyping",
+      type: "Prototyping",
+    },
+    {
+      category: "Mockups",
+      type: "Mockups",
+    },
+    
   ];
 
   return (
     <Section
       items={items}
-      color={props.color}
-      size={props.size}
-      backgroundImage={props.backgroundImage}
-      backgroundImageOpacity={props.backgroundImageOpacity}
+      color={color}
+      size={size}
+      backgroundImage={backgroundImage}
+      backgroundImageOpacity={backgroundImageOpacity}
     >
       <div className="container">
         <SectionHeader
-          title={props.title}
-          subtitle={props.subtitle}
+          title={title}
+          subtitle={subtitle}
           size={3}
           spaced={true}
           className="has-text-centered"

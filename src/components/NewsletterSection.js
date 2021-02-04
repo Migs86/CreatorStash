@@ -12,6 +12,7 @@ function NewsletterSection(props) {
       backgroundImageOpacity={props.backgroundImageOpacity}
     >
       <div className="container">
+        
         <div className="columns is-centered">
           <div className="column is-12 is-10-fullhd">
             <div className="columns is-vcentered">
@@ -24,13 +25,14 @@ function NewsletterSection(props) {
                 />
               </div>
               <div className="column is-half">
-                <Newsletter
+                <iframe src="https://creatorstash.substack.com/embed" width="480" height="320" style={{ background: "white" }} frameborder="0" scrolling="no"></iframe>
+                {/* <Newsletter
                   buttonText={props.buttonText}
                   buttonColor={props.buttonColor}
                   buttonInverted={props.buttonInverted}
                   inputPlaceholder={props.inputPlaceholder}
                   subscribedMessage={props.subscribedMessage}
-                />
+                /> */}
               </div>
             </div>
           </div>

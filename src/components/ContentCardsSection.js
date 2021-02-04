@@ -24,7 +24,7 @@ function ContentCardsSection(props) {
         <CenteredColumns>
           {props.items && props.items.length && props.items.map((item, index) => (
             <>
-              {item.fields["Top Pick"] === true && (
+              {item.fields["Featured"] === true && (
                 <div
                   className="column is-half-tablet is-one-quarter-desktop"
                   key={index}
@@ -57,7 +57,7 @@ function ContentCardsSection(props) {
                     </div>
                   </Link>
                 </div>
-              )}
+              )} 
             </>
           ))}
         </CenteredColumns>

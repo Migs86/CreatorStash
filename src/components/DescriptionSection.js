@@ -1,8 +1,9 @@
-import React from "react";
+import React, {useEffect} from "react";
 
-function DescriptionSection(props) {
-  const { link } = props;
+function DescriptionSection({ link }) {
 
+  console.log('desc link ', link[0])
+  
   return (
     <div className="columns">
       <div className="column">
@@ -11,9 +12,9 @@ function DescriptionSection(props) {
             <p>TL;DR</p>
           </div>
           <div className="message-body">
-            {link.fields.Description
-              ? link.fields.Description
-              : link.fields.Details}
+            {link[0] && link[0].fields && link[0].fields.Description
+              ? link[0].fields.Description
+              : (link[0] && link[0].fields && link[0].fields.Details ? link[0].fields.Details : '')}
           </div>
         </article>
       </div>
@@ -23,12 +24,14 @@ function DescriptionSection(props) {
             <p>Reaction</p>
           </div>
           <div className="message-body">
-            {link.fields.Review ? link.fields.Review : ""}
+            {link[0] && link[0].fields && link[0].fields.Review ? link[0].fields.Review : ''}
           </div>
         </article>
       </div>
     </div>
+    
   );
+  
 }
 
 export default DescriptionSection;

@@ -23,7 +23,7 @@ function DashboardSection(props) {
         {router.query.paid && auth.user.planIsActive && (
           <article className="DashboardSection__paid-message message is-success mx-auto">
             <div className="message-body">
-              You are now subscribed
+              You are now subscribed!  
               <span className="ml-2" role="img" aria-label="party">
                 🥳
               </span>
@@ -35,17 +35,15 @@ function DashboardSection(props) {
           <div className="column is-6-desktop">
             <div className="content">
               <p>
-                This would be a good place to build your custom product features
-                after exporting your codebase.
+                Soon you'll be able to favorite resources, review them, and submit ones we're missing.
               </p>
               <p>
-                You can grab the current user, query your database, render
-                custom components, and anything else you'd like.
+                If you want to submit any cool resources, send them to me at miguel@fernando.com.
               </p>
               <p>
-                Divjoy sets you up with everything you need so that you can get
-                right to work on building your web app.
+                In the meantime, you can subscribe to the newsletter and get updates from us there!
               </p>
+              <iframe src="https://creatorstash.substack.com/embed" width="480" height="320" style={{ background: "white" }} frameborder="0" scrolling="no"></iframe>
             </div>
           </div>
           <div className="column is-1" />

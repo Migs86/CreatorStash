@@ -39,7 +39,7 @@ function ContentLinksCardSection(props) {
                       <div className="card-image">
                         <figure className="image is-4by3">
                           <img 
-                            src={item.fields.screenshots && item.fields.screenshots.length ? item.fields.screenshots[0].url : "https://i.ibb.co/02Pd9D8/default.png"} alt={item.title} />
+                            src={item.fields.screenshots && item.fields.screenshots.length ? item.fields.screenshots[0].thumbnails.large.url : "https://i.ibb.co/02Pd9D8/default.png"} alt={item.title} />
                         </figure>
                       </div>
                       <div className="card-content">

@@ -1,67 +1,66 @@
 import React from "react";
 import "./LinkSectionHeader.scss";
 
-function LinkSectionHeader(props) {
+function LinkSectionHeader({ link, className, size, spaced, title, subtitle, ratings }) {
   // Render nothing if no title or subtitle
-  if (!props.title && !props.subtitle) {
+  if (!title && !subtitle) {
     return null;
   }
 
-  const { link: link } = props;
 
   return (
     <>
       <header
         className={
           "LinkSectionHeader__header" +
-          (props.className ? ` ${props.className}` : "")
+          (className ? ` ${className}` : "")
         }
       >
-        {props.title && (
+        {title && (
           <h1
             className={
               "title has-text-weight-bold" +
-              (props.size ? ` is-${props.size}` : "") +
-              (props.size === 1 ? " is-size-2-mobile" : "") +
-              (props.spaced ? " is-spaced" : "")
+              (size ? ` is-${size}` : "") +
+              (size === 1 ? " is-size-2-mobile" : "") +
+              (spaced ? " is-spaced" : "")
             }
           >
-            {link.fields.Name ? link.fields.Name : ""}
+            {link[0].fields.Name ? link[0].fields.Name : ""}
           </h1>
         )}
 
-        {props.subtitle && (
+        {subtitle && (
           <p
             className={
               "LinkSectionHeader__subtitle subtitle" +
-              (props.size > 4 ? " is-6" : "")
+              (size > 4 ? " is-6" : "")
             }
           >
-            {link.fields.Description
-              ? link.fields.Description
-              : link.fields.Details}
+            {link[0].fields.Description
+              ? link[0].fields.Description
+              : link[0].fields.Details}
           </p>
         )}
       </header>
 
-      {link.fields["Category"] && link.fields["Category"].length > 0 && (
+      {link[0].fields["Category"] && link[0].fields["Category"].length > 0 && (
         <div className="LinkSectionHeader__container container">
           <div className="column has-text-centered">
-            {props.ratings.map((item, index) => (
+            {ratings.map((item, index) => (
               <>
-                {!link.fields.Rating && (
+                {!link[0].fields.Rating && (
                   <span className="icon">
                     <i className="fa-star far" />
                   </span>
                 )}
 
-                {link.fields.Rating && link.fields.Rating >= item && (
+                {link[0].fields.Rating && link[0].fields.Rating >= item && (
                   <span className="icon has-text-warning">
                     <i className="fas fa-star" />
                   </span>
                 )}
 
-                {link.fields.Rating && link.fields.Rating < item && (
+                {link[0].fields.Rating && link[0].fields.Rating < item && (
                   <span className="icon has-text-warning">
                     <i className="far fa-star" />
                   </span>
@@ -70,8 +69,8 @@ function LinkSectionHeader(props) {
             ))}
           </div>
 
-          {link.fields["Category"].map((item, index) => (
-            <div className="column has-text-centered">
+          {link[0].fields["Category"].map((item, index) => (
+            <div className="column has-text-centered" key={index}>
               <span className="tag is-info is-medium">{item}</span>
             </div>
           ))}
