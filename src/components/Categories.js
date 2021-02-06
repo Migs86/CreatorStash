@@ -43,8 +43,8 @@ function Categories({items, color, size, backgroundImage, backgroundImageOpacity
       type: "Video Effects",
     },
     {
-      category: "Webpage Builder",
-      type: "Landingpage",
+      category: "Website Builder",
+      type: "Landing Page",
     },
     {
       category: "Monetize My Content",
@@ -57,10 +57,6 @@ function Categories({items, color, size, backgroundImage, backgroundImageOpacity
     {
       category: "Music and Sound FX",
       type: "Music and Sound FX",
-    },
-    {
-      category: "Stock Photos & Videos",
-      type: "Stock Photos & Videos",
     },
     {
       category: "Newsletter",

@@ -23,7 +23,7 @@ function IndexPage(props) {
     getRecords('Overview', resourcesFilter, setResources);
     
     const tutorialFilter = {
-      filterByFormula: `({Featured} = true)`,
+      filterByFormula: `({Featured} = "true")`,
       maxRecords: 3,
       view: "Grid view"
     };
@@ -78,7 +78,7 @@ function IndexPage(props) {
         size="medium"
         backgroundImage=""
         backgroundImageOpacity={1}
-        title="Categories"
+        title="Top Picks by Category"
         subtitle="Find some cool resources for your next project."
       />
       <UseCases
