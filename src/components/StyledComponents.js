@@ -5,14 +5,12 @@ export const SectionComponent = styled.section.attrs({
 })``;
 
 export const SectionContainer = styled.div.attrs({
-    className: "container has-text-centered"
+    className: "container "
 })`
     max-width: ${props => `${props.maxWidth ? props.maxWidth : "768px"}`};
 `;
 
-export const SectionHeader = styled.header.attrs({
-    className: "has-text-centered"
-})`
+export const SectionHeader = styled.header`
     &:not(:last-child) {
         margin-bottom: 3rem;
     }
@@ -22,7 +20,21 @@ export const SectionHeader = styled.header.attrs({
 
 export const SectionTitle = styled.h1.attrs({
     className: "title has-text-weight-bold is-spaced is-3"
-})``;
+})`
+    &:not(:first-child) {
+        margin-top: 1rem;
+    }
+`;
+
+export const CategoryTitle = styled.h1.attrs({
+    className: "title has-text-weight-bold is-spaced is-3"
+})`
+    font-size: 1rem;
+    margin-bottom: 1rem !important;
+    &:not(:first-child) {
+        margin-top: 4rem;
+    }
+`;
 
 export const SectionSubtitle = styled.h1.attrs({
     className: "subtitle"
@@ -30,7 +42,6 @@ export const SectionSubtitle = styled.h1.attrs({
     font-family: ${props => `${props.bold ? "Stolzl Bold" : "Stolzl Book"}`};
     font-size: 1.5rem;
     max-width: 700px;
-    margin: 0px auto;
     display: block;
 `;
 export const SectionText = styled.p`
@@ -48,7 +59,6 @@ export const SectionDescription = styled.p.attrs({
     className: "subtitle"
 })`
     max-width: 700px;
-    margin: 0px auto;
     display: block;
 `;
 
@@ -71,12 +81,14 @@ export const SectionLink = styled.a.attrs({
 `;
 
 export const ScreenshotSection = styled.div.attrs({
-    className: "columns is-centered is-variable is-4 is-multiline"
+    className: "columns is-variable is-4 is-multiline"
 })`
     margin-bottom: 1rem;
 `;
 
-export const RatingsSection = styled.div`
+export const RatingsSection = styled.div.attrs({
+    className: "has-text-centered"
+})`
     margin: 0px auto;
     width: 100%;
     max-width: 700px;
@@ -107,3 +119,15 @@ export const CardDescriptionParagraph = styled.p`
     -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;
 `;
+export const TagValueSection = styled.div`
+    margin-bottom: 0.8em;
+`;
+
+export const Tag = styled.span.attrs({
+    className: "tag is-light is-info"
+})`
+    &:not(:last-child) {
+        margin-right: 0.5rem;
+    }
+`;
+

@@ -18,7 +18,7 @@ function Our2CentsSection(props) {
           subtitle={props.subtitle}
           size={3}
           spaced={true}
-          className="has-text-centered"
+          
         />
         <VideoEmbed url={props.embedUrl} />
       </div>

@@ -29,6 +29,7 @@ function AppsPage(props) {
       backgroundImageOpacity={1}
       title={router.query.name}
       subtitle=""
+      tagValue="Categories"
     />
   );
 }

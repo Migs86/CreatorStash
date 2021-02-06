@@ -24,7 +24,7 @@ function CategoryPage(props) {
 
   return (
     <ContentCardsSection
-      items={resources.map(item => item.fields.Category.includes(router.query.category))}
+      items={resources.filter(item => item.fields.Category.includes(router.query.category))}
       color="white"
       size="medium"
       backgroundImage=""

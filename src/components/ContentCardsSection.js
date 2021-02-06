@@ -21,7 +21,7 @@ function ContentCardsSection(props) {
           subtitle={props.subtitle}
           size={3}
           spaced={true}
-          className="has-text-centered"
+          
         />
         <ResourceItem items={props.items} tagValue={props.tagValue} />
       </div>

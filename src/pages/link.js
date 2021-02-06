@@ -64,7 +64,7 @@ function LinkPage(props) {
       
 
         <SectionContainer>
-          <ScreenshotSection className="columns is-centered is-variable is-4 is-multiline">
+          <ScreenshotSection className="columns is-variable is-4 is-multiline">
             {link.fields && link.fields.screenshots && link.fields.screenshots.map((item, index) => (
               <>
                 <div

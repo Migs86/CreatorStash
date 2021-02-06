@@ -45,7 +45,7 @@ function LinkSectionHeader({ link, className, size, spaced, title, subtitle, rat
 
       {link[0].fields["Category"] && link[0].fields["Category"].length > 0 && (
         <div className="LinkSectionHeader__container container">
-          <div className="column has-text-centered">
+          <div className="column ">
             {ratings.map((item, index) => (
               <>
                 {!link[0].fields.Rating && (
@@ -70,7 +70,7 @@ function LinkSectionHeader({ link, className, size, spaced, title, subtitle, rat
           </div>
 
           {link[0].fields["Category"].map((item, index) => (
-            <div className="column has-text-centered" key={index}>
+            <div className="column " key={index}>
               <span className="tag is-info is-medium">{item}</span>
             </div>
           ))}

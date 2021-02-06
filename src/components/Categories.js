@@ -99,15 +99,15 @@ function Categories({items, color, size, backgroundImage, backgroundImageOpacity
           subtitle={subtitle}
           size={3}
           spaced={true}
-          className="has-text-centered"
-        />
-        <CenteredColumns>
           
-        </CenteredColumns>
-        <CenteredColumns items={items}>
+        />
+        { categories.map((category, index) => (
+          <ResourceItem items={items.filter(item => item.fields.Category && item.fields.Category.includes(category.type) && item.fields["Top Pick"])} tagValue={"Use Case"} title={category.category} link={"/category/" + category.type} seeAll />
+        ))}
+        {/* <CenteredColumns items={items}>
           {categories.map((category, index) => (
             
-            <div className="column is-full" key={index}>
+            <div className="column is-full " key={index}>
               <article className="Categories__faq-item">
                 <h1 className="title is-4 is-spaced">{category.category}</h1>
                 <div className="columns is-variable is-4 is-multiline">
@@ -115,7 +115,7 @@ function Categories({items, color, size, backgroundImage, backgroundImageOpacity
                   
                   
                       <div
-                        className="column is-half-tablet is-one-quarter-desktop"
+                        className="column is-half-tablet is-one-third-desktop"
                         key={index}
                       >
                         <Link
@@ -167,7 +167,7 @@ function Categories({items, color, size, backgroundImage, backgroundImageOpacity
               </article>
             </div>
           ))}
-        </CenteredColumns>
+        </CenteredColumns> */}
       </div>
     </Section>
   );

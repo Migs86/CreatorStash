@@ -18,7 +18,7 @@ function VideoListSection({color, size, backgroundImage, backgroundImageOpacity,
           subtitle={videos && videos.length > 0 ? subtitle : "We don't have any videos yet.  Submit any gems and we'll put them up!"}
           size={3}
           spaced={true}
-          className="has-text-centered"
+          
         />
         { videos && videos.length > 0 ?
           <div className="columns">
