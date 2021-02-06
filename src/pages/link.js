@@ -2,7 +2,7 @@ import React, {useState, useEffect} from "react";
 // import LinkMainSection from "./../components/LinkMainSection";
 import { SectionComponent, SectionContainer, SectionHeader, SectionTitle, SectionSubtitle, SectionLink, ScreenshotSection, SectionText, StatHeader } from "./../components/StyledComponents";
 import Our2CentsSection from "./../components/Our2CentsSection";
-import TutorialsSection from "./../components/TutorialsSection";
+import VideoListSection from "./../components/VideoListSection";
 import Ratings from "./../components/RatingsComponent";
 import VideoEmbed from './../components/VideoEmbed';
 import { useRouter } from "./../util/router.js";
@@ -10,7 +10,10 @@ import getRecords from '../util/airtable';
 
 function LinkPage(props) {
   const router = useRouter();
-  const [link, setLink] = useState([]);
+  const [link, setLink] = useState({});
+  const [tutorials, setTutorials] = useState([]);
+  
+
   const [state, setState] = useState({
     showModal: false,
     modalImage: '',
@@ -20,16 +23,28 @@ function LinkPage(props) {
   useEffect(() => {
       // filterByFormula: 'OR(Find("Subscription", {Cost}),Find("One-Time Fee", {Cost}))', 
       // filterByFormula: '{Rating}>3',
-    const filter = {
+      
+    const linkFilter = {
       filterByFormula: `({Name} = '${router.query.name}')`,
       maxRecords: 1,
       view: "Grid view"
     };
-    getRecords('Overview', filter, setLink, true);
     
-  }, []);
-  console.log('Link page link: ', link)
-  
+    if (!link.fields) {
+      getRecords('Overview', linkFilter, setLink, true);    
+    } else {
+      const tutorialFilter = {
+        filterByFormula: `Find("${link.fields.Category[0]}", {Category})`,
+        maxRecords: 3,
+        view: "Grid view"
+      };
+      getRecords('Tutorials', tutorialFilter, setTutorials);
+    }
+    
+    
+    
+  }, [link]);
+  console.log('Tutorials => ', tutorials);
   return (
     <>
       
@@ -139,9 +154,11 @@ function LinkPage(props) {
           </div>
         </SectionContainer>
       </SectionComponent>
-      <SectionComponent>
-        <SectionContainer>
-          { link.fields && link.fields['Review Video'] || true ? (
+      
+
+        { link.fields && link.fields['Review Video'] ? (
+        <SectionComponent>
+          <SectionContainer>
             <>
               <SectionHeader center>
                 <SectionTitle>Our 2 Cents</SectionTitle>
@@ -149,19 +166,19 @@ function LinkPage(props) {
               </SectionHeader>
               <VideoEmbed url={link.fields && link.fields['Review Video'] ? link.fields['Review Video'] : "https://www.youtube.com/embed/YTdDqYZmdKo"} />
             </>
-          ) : ''}
-          
-        </SectionContainer>
-        <TutorialsSection
+          </SectionContainer>
+        </SectionComponent>) : ''}
+        
+        <VideoListSection
             color="white"
             size="medium"
             backgroundImage=""
             backgroundImageOpacity={1}
             title="Tutorials"
             subtitle="We watched the bad ones so you can only watch the good ones"
-            embedUrl="https://www.youtube.com/embed/YTdDqYZmdKo"
+            videos={tutorials}
           />
-      </SectionComponent>
+      
       
       
     </>

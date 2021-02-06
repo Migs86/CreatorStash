@@ -82,3 +82,28 @@ export const RatingsSection = styled.div`
     max-width: 700px;
     padding-bottom: 1rem;
 `;
+
+export const RatingIconNumber = styled.span`
+    position: absolute;
+    top: 0;
+    left: 0;
+    text-align: center;
+    width: 24px;
+    line-height: 24px;
+    font-size: 0.75rem;
+    vertical-align: middle;
+`;
+export const RatingIconContainer = styled.div`
+    position: relative;
+    height: 24x;
+    width: 24px;
+    margin-left: 8px;
+    display: inline;
+`;
+export const CardDescriptionParagraph = styled.p`
+    overflow : hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+`;

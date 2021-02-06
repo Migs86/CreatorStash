@@ -43,7 +43,7 @@ function DashboardSection(props) {
               <p>
                 In the meantime, you can subscribe to the newsletter and get updates from us there!
               </p>
-              <iframe src="https://creatorstash.substack.com/embed" width="480" height="320" style={{ background: "white" }} frameborder="0" scrolling="no"></iframe>
+              <iframe src="https://creatorstash.substack.com/embed" style={{ width: "100%", background: "white" }} frameborder="0" scrolling="no"></iframe>
             </div>
           </div>
           <div className="column is-1" />

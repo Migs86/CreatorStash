@@ -11,6 +11,7 @@ import FavesPage from "./faves";
 import UsecasePage from "./usecase";
 import LinkPage from "./link";
 import CategoryPage from "./category";
+import AppsPage from "./apps";
 import { Switch, Route, Router } from "./../util/router.js";
 import FirebaseActionPage from "./firebase-action.js";
 import NotFoundPage from "./not-found.js";
@@ -52,6 +53,8 @@ function App(props) {
               <Route exact path="/link/:name" component={LinkPage}  />
 
               <Route exact path="/category/:category" component={CategoryPage}  />
+
+              <Route exact path="/app/:name" component={AppsPage}  />
 
               <Route
                 exact

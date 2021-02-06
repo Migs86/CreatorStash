@@ -25,14 +25,7 @@ function NewsletterSection(props) {
                 />
               </div>
               <div className="column is-half">
-                <iframe src="https://creatorstash.substack.com/embed" width="480" height="320" style={{ background: "white" }} frameborder="0" scrolling="no"></iframe>
-                {/* <Newsletter
-                  buttonText={props.buttonText}
-                  buttonColor={props.buttonColor}
-                  buttonInverted={props.buttonInverted}
-                  inputPlaceholder={props.inputPlaceholder}
-                  subscribedMessage={props.subscribedMessage}
-                /> */}
+                <iframe src="https://creatorstash.substack.com/embed" style={{ width: "100%", background: "white" }} frameborder="0" scrolling="no"></iframe>
               </div>
             </div>
           </div>

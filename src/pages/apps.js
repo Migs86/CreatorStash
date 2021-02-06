@@ -4,14 +4,12 @@ import { useRouter } from "./../util/router.js";
 import getRecords from './../util/airtable';
 // import AirtableBase from '../util/airtable';
 
-function CategoryPage(props) {
- 
- 
+function AppsPage(props) {
   const [resources, setResources] = useState([]);
 
   useEffect(() => {
     const filter = {
-      filterByFormula: `(Find("${router.query.category}", {Category}))`,
+      filterByFormula: `(Find("${router.query.name}", {App}))`,
       maxRecords: 100,
       view: "Grid view"
     };
@@ -24,17 +22,15 @@ function CategoryPage(props) {
 
   return (
     <ContentCardsSection
-      items={resources.map(item => item.fields.Category.includes(router.query.category))}
+      items={resources}
       color="white"
       size="medium"
       backgroundImage=""
       backgroundImageOpacity={1}
-      title={router.query.category}
+      title={router.query.name}
       subtitle=""
-      featuredOnly={false}
-      tagValue="Use Case"
     />
   );
 }
 
-export default CategoryPage;
+export default AppsPage;

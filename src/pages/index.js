@@ -7,22 +7,31 @@ import NewsletterSection from "./../components/NewsletterSection";
 import ContentCardsSection from "./../components/ContentCardsSection";
 import UsersSection from "./../components/UsersSection";
 import getRecords from '../util/airtable';
+import { Link } from "./../util/router.js";
 
 function IndexPage(props) {
   const [resources, setResources] = useState([]);
+  const [tutorials, setTutorials] = useState([]);
 
   useEffect(() => {
       // filterByFormula: 'OR(Find("Subscription", {Cost}),Find("One-Time Fee", {Cost}))', 
       // filterByFormula: '{Rating}>3',
-    const filter = {
+    const resourcesFilter = {
       maxRecords: 300,
       view: "Grid view"
     };
-    getRecords('Overview', filter, setResources);
+    getRecords('Overview', resourcesFilter, setResources);
+    
+    const tutorialFilter = {
+      filterByFormula: `({Featured} = true)`,
+      maxRecords: 3,
+      view: "Grid view"
+    };
+    getRecords('Tutorials', tutorialFilter, setTutorials);
 
   }, []);
 
-  
+  console.log('Tutorials => ', tutorials);  
   
   return (
     <>
@@ -54,13 +63,14 @@ function IndexPage(props) {
         subscribedMessage="You are now subscribed!"
       />
       <ContentCardsSection
-        items={resources}
+        items={resources.filter(item => item.fields.Featured)}
         color="white"
         size="medium"
         backgroundImage=""
         backgroundImageOpacity={1}
         title="Featured Picks"
         subtitle=""
+        tagValue="Use Case"
       />
       <Categories
         items={resources}
@@ -80,7 +90,7 @@ function IndexPage(props) {
         title="Use Cases"
         subtitle="Find help for a specific problem."
       />
-      <SuperHacks
+      {/* <SuperHacks
         items={resources}
         color="white"
         size="medium"
@@ -88,7 +98,7 @@ function IndexPage(props) {
         backgroundImageOpacity={1}
         title="Learn new superhacks"
         subtitle="'cause its 2021 and regular hacks don't cut it anymore."
-      />
+      /> */}
       
       <UsersSection
         color="white"
@@ -111,6 +121,8 @@ function IndexPage(props) {
         inputPlaceholder="Enter your email"
         subscribedMessage="You are now subscribed!"
       />
+      {/* <Link to={"/app/Figma"}>FIGMA</Link> */}
+      {/* <Link to={"/app/Sketch"}>Sketch</Link> */}
     </>
   );
 }
