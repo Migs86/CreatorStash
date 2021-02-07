@@ -68,7 +68,7 @@ function Categories({items, color, size, backgroundImage, backgroundImageOpacity
     },
     {
       category: "UI / UX Design",
-      type: "Design Tools",
+      type: "Design",
     },
     {
       category: "Iconography",
