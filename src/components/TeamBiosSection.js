@@ -3,6 +3,7 @@ import Section from "./Section";
 import SectionHeader from "./SectionHeader";
 import CenteredColumns from "./CenteredColumns";
 import Avatar from "./Avatar";
+import { Link } from "./../util/router.js";
 import "./TeamBiosSection.scss";
 
 function TeamBiosSection(props) {
@@ -35,7 +36,7 @@ function TeamBiosSection(props) {
         <CenteredColumns>
           {items.map((item, index) => (
             <div
-              className="column is-half-tablet is-one-third-desktop is-flex"
+              className="column is-two-thirds-tablet is-two-thirds-desktop is-flex"
               key={index}
             >
               <div className="TeamBiosSection__card card is-flex">
@@ -44,10 +45,25 @@ function TeamBiosSection(props) {
                     <Avatar image={item.avatar} size={128} alt={item.name} />
                   </div>
                   <div className="TeamBiosSection__details">
-                    <p className="is-size-5">{item.name}</p>
+                    <p className="is-size-5 is-spaced">{item.name}</p>
+
                     <p className="TeamBiosSection__role is-size-7 is-uppercase has-text-weight-semibold">
                       {item.role}
                     </p>
+                    
+                    <a href={"https://www.youtube.com/channel/UCzsvFtfaP3wUYLophqBzlzg?sub_confirmation=1"}>
+                      <h3 style={{marginTop: "1rem"}}>
+                        <span className="icon">
+                          <i className="fa-youtube fab" />
+                        </span>
+                        Youtube
+                      </h3>
+                    </a>
+                    
+                    
+                    
+                    
+                    
                     <p className="TeamBiosSection__bio">{item.bio}</p>
                   </div>
                 </div>

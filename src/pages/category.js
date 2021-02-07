@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import ContentCardsSection from "./../components/ContentCardsSection";
 import { useRouter } from "./../util/router.js";
-import getRecords from './../util/airtable';
+import Airtable from './../util/airtable';
 // import AirtableBase from '../util/airtable';
 
 function CategoryPage(props) {
@@ -15,10 +15,10 @@ function CategoryPage(props) {
       maxRecords: 100,
       view: "Grid view"
     };
-    getRecords('Overview', filter, setResources);
+    Airtable.getRecords('Overview', filter, setResources);
     
   }, []);
-  console.log('Category resources ==> ', resources)
+  // console.log('Category resources ==> ', resources)
 
   const router = useRouter();
 

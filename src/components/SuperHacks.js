@@ -1,7 +1,7 @@
 import React from "react";
 import Section from "./Section";
 import SectionHeader from "./SectionHeader";
-import CenteredColumns from "./CenteredColumns";
+import LeftColumns from "./LeftColumns";
 import { Link } from "./../util/router.js";
 import "./UseCases.scss";
 
@@ -49,7 +49,7 @@ function SuperHacks(props) {
           spaced={true}
           
         />
-        <CenteredColumns>
+        <LeftColumns>
           {hackegories.map((category, index) => (
             <div className="column is-half" key={index}>
               <article className="UseCases__use-case-item">
@@ -85,7 +85,7 @@ function SuperHacks(props) {
               </article>
             </div>
           ))}
-        </CenteredColumns>
+        </LeftColumns>
       </div>
     </Section>
   );

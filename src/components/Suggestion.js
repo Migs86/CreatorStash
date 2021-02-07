@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import FormAlert from "./FormAlert";
 import FormField from "./FormField";
-import contact from "./../util/contact.js";
+import Airtable from './../util/airtable';
 import { useForm } from "react-hook-form";
 
-function Contact(props) {
+function Suggestion(props) {
   const [pending, setPending] = useState(false);
   const [formAlert, setFormAlert] = useState(null);
   const { handleSubmit, register, errors, reset } = useForm();
@@ -12,29 +12,12 @@ function Contact(props) {
   const onSubmit = (data) => {
     // Show pending indicator
     setPending(true);
-
-    contact
-      .submit(data)
-      .then(() => {
-        // Clear form
-        reset();
-        // Show success alert message
-        setFormAlert({
-          type: "success",
-          message: "Your message has been sent!",
-        });
-      })
-      .catch((error) => {
-        // Show error alert message
-        setFormAlert({
-          type: "error",
-          message: error.message,
-        });
-      })
-      .finally(() => {
-        // Hide pending indicator
-        setPending(false);
-      });
+    Airtable.postRecord('Suggestions', data);
+    setFormAlert({
+      type: "success",
+      message: "Thanks for your suggestion!",
+    });
+    setPending(false);
   };
 
   return (
@@ -48,11 +31,11 @@ function Contact(props) {
           <div className="field-body">
             {props.showNameField && (
               <FormField
-                name="name"
+                name="Name"
                 type="text"
                 size="medium"
                 placeholder="Name"
-                error={errors.name}
+                error={errors.Name}
                 inputRef={register({
                   required: "Please enter your name",
                 })}
@@ -60,11 +43,11 @@ function Contact(props) {
             )}
 
             <FormField
-              name="email"
+              name="Email"
               type="email"
               size="medium"
               placeholder="Email"
-              error={errors.email}
+              error={errors.Email}
               inputRef={register({
                 required: "Please enter your email",
               })}
@@ -72,20 +55,21 @@ function Contact(props) {
           </div>
         </div>
         <div className="field is-horizontal">
-          <div className="field-body">
+          <div className="field-body">          
             <FormField
-              name="message"
-              type="textarea"
+              name="URL"
+              type="text"
               size="medium"
-              placeholder="Message"
-              rows={5}
-              error={errors.message}
+              placeholder="www.creatorstash.com"
+              error={errors.URL}
               inputRef={register({
-                required: "Please enter a message",
+                required: "Drop us the link",
               })}
             />
           </div>
         </div>
+
+        
         <div className="field is-horizontal">
           <div className="field-body">
             <div className="field">
@@ -110,4 +94,4 @@ function Contact(props) {
   );
 }
 
-export default Contact;
+export default Suggestion;

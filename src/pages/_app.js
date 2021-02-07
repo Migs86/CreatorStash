@@ -3,7 +3,7 @@ import "./../styles/global.scss";
 import Navbar from "./../components/Navbar";
 import IndexPage from "./index";
 import AboutPage from "./about";
-import ContactPage from "./contact";
+import SuggestionPage from "./suggestion";
 import DashboardPage from "./dashboard";
 import SettingsPage from "./settings";
 import AuthPage from "./auth";
@@ -38,7 +38,7 @@ function App(props) {
 
               <Route exact path="/about" component={AboutPage} />
 
-              <Route exact path="/contact" component={ContactPage} />
+              <Route exact path="/suggestion" component={SuggestionPage} />
 
               <Route exact path="/dashboard" component={DashboardPage} />
 

@@ -7,7 +7,7 @@ export const SectionComponent = styled.section.attrs({
 export const SectionContainer = styled.div.attrs({
     className: "container "
 })`
-    max-width: ${props => `${props.maxWidth ? props.maxWidth : "768px"}`};
+    
 `;
 
 export const SectionHeader = styled.header`

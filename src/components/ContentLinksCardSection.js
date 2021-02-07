@@ -1,7 +1,7 @@
 import React from "react";
 import Section from "./Section";
 import SectionHeader from "./SectionHeader";
-import CenteredColumns from "./CenteredColumns";
+import LeftColumns from "./LeftColumns";
 import { Link, useRouter } from "./../util/router.js";
 import "./ContentLinksCardSection.scss";
 
@@ -23,7 +23,7 @@ function ContentLinksCardSection(props) {
           spaced={true}
           
         />
-        <CenteredColumns>
+        <LeftColumns>
           {props.items.map((item, index) => (
             <>
               {item.fields["Use Case"] &&
@@ -57,7 +57,7 @@ function ContentLinksCardSection(props) {
                 )}
             </>
           ))}
-        </CenteredColumns>
+        </LeftColumns>
       </div>
     </Section>
   );

@@ -1,7 +1,7 @@
 import React from "react";
 import Section from "./Section";
 import SectionHeader from "./SectionHeader";
-import CenteredColumns from "./CenteredColumns";
+import LeftColumns from "./LeftColumns";
 import { Link } from "./../util/router.js";
 import Avatar from "./Avatar";
 import "./UsersSection.scss";
@@ -61,7 +61,7 @@ function UsersSection(props) {
           spaced={true}
           
         />
-        <CenteredColumns>
+        <LeftColumns>
           {items.map((item, index) => (
             <div
               className="column is-half-tablet is-one-third-desktop is-flex"
@@ -96,7 +96,7 @@ function UsersSection(props) {
               </Link>
             </div>
           ))}
-        </CenteredColumns>
+        </LeftColumns>
       </div>
     </Section>
   );

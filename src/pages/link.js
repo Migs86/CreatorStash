@@ -6,7 +6,7 @@ import VideoListSection from "./../components/VideoListSection";
 import Ratings from "./../components/RatingsComponent";
 import VideoEmbed from './../components/VideoEmbed';
 import { useRouter } from "./../util/router.js";
-import getRecords from '../util/airtable';
+import Airtable from '../util/airtable';
 
 function LinkPage(props) {
   const router = useRouter();
@@ -31,20 +31,20 @@ function LinkPage(props) {
     };
     
     if (!link.fields) {
-      getRecords('Overview', linkFilter, setLink, true);    
+      Airtable.getRecords('Overview', linkFilter, setLink, true);    
     } else {
       const tutorialFilter = {
         filterByFormula: `Find("${link.fields.Category[0]}", {Category})`,
         maxRecords: 3,
         view: "Grid view"
       };
-      getRecords('Tutorials', tutorialFilter, setTutorials);
+      Airtable.getRecords('Tutorials', tutorialFilter, setTutorials);
     }
     
     
     
   }, [link]);
-  console.log('Tutorials => ', tutorials);
+  // console.log('Tutorials => ', tutorials);
   return (
     <>
       

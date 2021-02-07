@@ -7,7 +7,7 @@ import "./HeroSection.scss";
 function HeroSection(props) {
 
   useEffect(() => {
-    console.log('reload hero')
+    // console.log('reload hero')
   }, [props.resources])
   return (
     <Section

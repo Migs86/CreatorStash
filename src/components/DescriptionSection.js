@@ -2,7 +2,7 @@ import React, {useEffect} from "react";
 
 function DescriptionSection({ link }) {
 
-  console.log('desc link ', link[0])
+  // console.log('desc link ', link[0])
   
   return (
     <div className="columns">

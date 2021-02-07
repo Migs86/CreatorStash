@@ -3,8 +3,8 @@ import LeftColumns from "./LeftColumns";
 import { RatingIconNumber, RatingIconContainer, CardDescriptionParagraph, TagValueSection, Tag, CategoryTitle } from "./../components/StyledComponents";
 import { Link } from "./../util/router.js";
 
-function ResourceItems(props) {
-    
+function TutorialItems(props) {
+    // console.log('ITEMS IN RESOURCE => ', props.items)
   return (
       <>
       { props.title ? <CategoryTitle className="title is-4 is-spaced">{props.title}</CategoryTitle> : ''}
@@ -76,6 +76,6 @@ function ResourceItems(props) {
   );
 }
 
-export default ResourceItems;
+export default TutorialItems;
 
 

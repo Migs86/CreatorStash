@@ -42,10 +42,10 @@ function MyComponent(){
   const router = useRouter();
 
   // Get value from query string (?postId=123) or route param (/:postId)
-  console.log(router.query.postId);
+  // console.log(router.query.postId);
 
   // Get current pathname
-  console.log(router.pathname)
+  // console.log(router.pathname)
 
   // Navigate with the <Link> component or with router.push()
   return (

@@ -2,6 +2,7 @@ import React from "react";
 import Section from "./Section";
 import SectionHeader from "./SectionHeader";
 import VideoEmbed from "./VideoEmbed";
+import { Link } from "./../util/router.js";
 import "./VideoListSection.scss";
 
 function VideoListSection({color, size, backgroundImage, backgroundImageOpacity, title, subtitle, videos}) {
@@ -12,7 +13,7 @@ function VideoListSection({color, size, backgroundImage, backgroundImageOpacity,
       backgroundImage={backgroundImage}
       backgroundImageOpacity={backgroundImageOpacity}
     >
-      <div className="VideoListSection__container container">
+      <div className="container">
         <SectionHeader
           title={title}
           subtitle={videos && videos.length > 0 ? subtitle : "We don't have any videos yet.  Submit any gems and we'll put them up!"}
@@ -28,8 +29,16 @@ function VideoListSection({color, size, backgroundImage, backgroundImageOpacity,
             )}
           </div>
         :
-          <div className="columns is-centered">
-            <button className="button is-primary">Submit A Video</button>
+          <div className="columns">
+            <Link
+                className={
+                  "button is-primary is-medium"
+                }
+                to={"/suggestion"}
+              >
+                Submit A Video
+              </Link>
+            
           </div>
         }
         

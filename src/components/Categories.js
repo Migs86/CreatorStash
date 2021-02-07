@@ -1,7 +1,7 @@
 import React, {useState} from "react";
 import Section from "./Section";
 import SectionHeader from "./SectionHeader";
-import CenteredColumns from "./CenteredColumns";
+import LeftColumns from "./LeftColumns";
 import ContentCardsSection from "./ContentCardsSection";
 import ResourceItem from "./ResourceItem";
 import { RatingIconNumber, RatingIconContainer, CardDescriptionParagraph, CardDescriptionContainer } from "./../components/StyledComponents";
@@ -15,7 +15,7 @@ function Categories({items, color, size, backgroundImage, backgroundImageOpacity
  
 
 
-  console.log("my data =====>",  items)
+  // console.log("my data =====>",  items)
 
   const categories = [
     {
@@ -104,7 +104,7 @@ function Categories({items, color, size, backgroundImage, backgroundImageOpacity
         { categories.map((category, index) => (
           <ResourceItem items={items.filter(item => item.fields.Category && item.fields.Category.includes(category.type) && item.fields["Top Pick"])} tagValue={"Use Case"} title={category.category} link={"/category/" + category.type} seeAll />
         ))}
-        {/* <CenteredColumns items={items}>
+        {/* <LeftColumns items={items}>
           {categories.map((category, index) => (
             
             <div className="column is-full " key={index}>
@@ -167,7 +167,7 @@ function Categories({items, color, size, backgroundImage, backgroundImageOpacity
               </article>
             </div>
           ))}
-        </CenteredColumns> */}
+        </LeftColumns> */}
       </div>
     </Section>
   );

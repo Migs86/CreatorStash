@@ -5,9 +5,9 @@ import DescriptionSection from "./DescriptionSection";
 import "./LinkMainSection.scss";
 
 function LinkMainSection({ link, color, size, backgroundImage, backgroundImageOpacity, title, subtitle}) {
-  console.log('LinkMainSection ', link)
+
   useEffect(() => {
-    console.log('LinkMainSection effect', link)
+    
   }, [link]);
 
   return (

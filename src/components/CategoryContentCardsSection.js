@@ -1,7 +1,7 @@
 import React from "react";
 import Section from "./Section";
 import SectionHeader from "./SectionHeader";
-import CenteredColumns from "./CenteredColumns";
+import LeftColumns from "./LeftColumns";
 import { Link, useRouter } from "./../util/router.js";
 import "./CategoryContentCardsSection.scss";
 
@@ -23,7 +23,7 @@ function CategoryContentCardsSection(props) {
           spaced={true}
           
         />
-        <CenteredColumns>
+        <LeftColumns>
           {  props.items ? props.items.map((item, index) => (
             <>
               {item.fields.Category.includes(router.query.category) && (
@@ -59,7 +59,7 @@ function CategoryContentCardsSection(props) {
               )}
             </>
           )) : ''}
-        </CenteredColumns>
+        </LeftColumns>
       </div>
     </Section>
   );

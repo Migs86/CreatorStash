@@ -1,10 +1,10 @@
 import React from "react";
 import Section from "./Section";
 import SectionHeader from "./SectionHeader";
-import Contact from "./Contact";
-import "./ContactSection.scss";
+import Suggestion from "./Suggestion";
+import "./SuggestionSection.scss";
 
-function ContactSection(props) {
+function SuggestionSection(props) {
   return (
     <Section
       color={props.color}
@@ -12,7 +12,7 @@ function ContactSection(props) {
       backgroundImage={props.backgroundImage}
       backgroundImageOpacity={props.backgroundImageOpacity}
     >
-      <div className="ContactSection__container container">
+      <div className="SuggestionSection__container container">
         <SectionHeader
           title={props.title}
           subtitle={props.subtitle}
@@ -20,7 +20,7 @@ function ContactSection(props) {
           spaced={true}
           className="has-text-centered"
         />
-        <Contact
+        <Suggestion
           showNameField={props.showNameField}
           buttonText={props.buttonText}
           buttonColor={props.buttonColor}
@@ -31,4 +31,4 @@ function ContactSection(props) {
   );
 }
 
-export default ContactSection;
+export default SuggestionSection;

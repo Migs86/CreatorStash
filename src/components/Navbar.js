@@ -60,9 +60,18 @@ function Navbar(props) {
             )}
 
             {!auth.user && (
-              <Link className="navbar-item" to="/auth/signin">
-                Sign in
-              </Link>
+              <>
+                
+                <Link 
+                  to="/suggestion"
+                  className="button is-primary"
+                >
+                  Suggest A Resource
+                </Link>
+                <Link className="button is-light" to="/auth/signin" style={{marginLeft: "1rem"}}>
+                  Sign in
+                </Link>
+              </>
             )}
           </div>
         </div>

@@ -5,13 +5,16 @@ import UseCases from "./../components/UseCases";
 import SuperHacks from "./../components/SuperHacks";
 import NewsletterSection from "./../components/NewsletterSection";
 import ContentCardsSection from "./../components/ContentCardsSection";
+import AppSection from "./../components/AppSection";
 import UsersSection from "./../components/UsersSection";
-import getRecords from '../util/airtable';
+import Airtable from '../util/airtable';
 import { Link } from "./../util/router.js";
 
 function IndexPage(props) {
   const [resources, setResources] = useState([]);
   const [tutorials, setTutorials] = useState([]);
+  const [apps, setApps] = useState([]);
+
 
   useEffect(() => {
       // filterByFormula: 'OR(Find("Subscription", {Cost}),Find("One-Time Fee", {Cost}))', 
@@ -20,18 +23,27 @@ function IndexPage(props) {
       maxRecords: 300,
       view: "Grid view"
     };
-    getRecords('Overview', resourcesFilter, setResources);
+    Airtable.getRecords('Overview', resourcesFilter, setResources);
     
     const tutorialFilter = {
       filterByFormula: `({Featured} = "true")`,
       maxRecords: 3,
       view: "Grid view"
     };
-    getRecords('Tutorials', tutorialFilter, setTutorials);
+    Airtable.getRecords('Tutorials', tutorialFilter, setTutorials);
+    
+    const appFilter = {
+      // filterByFormula: `({Featured} = "checked")`,
+      maxRecords: 3,
+      view: "Grid view"
+    };
 
+    Airtable.getRecords('AppTypes', appFilter, setApps);
+
+    // console.log('apps', apps);
   }, []);
 
-  console.log('Tutorials => ', tutorials);  
+  
   
   return (
     <>
@@ -72,6 +84,13 @@ function IndexPage(props) {
         subtitle=""
         tagValue="Use Case"
       />
+      <AppSection
+        items={apps}
+        color="white"
+        size="medium"
+        backgroundImage=""
+        backgroundImageOpacity={1}
+      />
       <Categories
         items={resources}
         color="white"
@@ -81,7 +100,7 @@ function IndexPage(props) {
         title="Top Picks by Category"
         subtitle="Find some cool resources for your next project."
       />
-      <UseCases
+      {/* <UseCases
         items={resources}
         color="white"
         size="medium"
@@ -89,7 +108,7 @@ function IndexPage(props) {
         backgroundImageOpacity={1}
         title="Use Cases"
         subtitle="Find help for a specific problem."
-      />
+      /> */}
       {/* <SuperHacks
         items={resources}
         color="white"
@@ -121,7 +140,7 @@ function IndexPage(props) {
         inputPlaceholder="Enter your email"
         subscribedMessage="You are now subscribed!"
       />
-      {/* <Link to={"/app/Figma"}>FIGMA</Link> */}
+      <Link to={"/app/Premiere Pro"}>FIGMA</Link>
       {/* <Link to={"/app/Sketch"}>Sketch</Link> */}
     </>
   );
