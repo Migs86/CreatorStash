@@ -140,7 +140,7 @@ function IndexPage(props) {
         inputPlaceholder="Enter your email"
         subscribedMessage="You are now subscribed!"
       />
-      <Link to={"/app/Premiere Pro"}>FIGMA</Link>
+      {/* <Link to={"/app/Premiere Pro"}>FIGMA</Link> */}
       {/* <Link to={"/app/Sketch"}>Sketch</Link> */}
     </>
   );
